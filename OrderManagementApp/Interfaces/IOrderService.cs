@@ -11,5 +11,7 @@ namespace OrderManagementApp.Interfaces
     {
         void AddOrderItem(int productId, int quantity);
         void RemoveOrderItem(int productId);
+        decimal GetOrderTotal();
+        Order GetCurrentOrder();
     }
 }

@@ -17,5 +17,34 @@ namespace OrderManagementApp.Controllers
             _orderService = orderService;
             _productService = productService;
         }
+
+        public void AddProductToOrder(int productId, int quantity)
+        {
+            _orderService.AddOrderItem(productId, quantity);
+        }
+
+        public void RemoveProductFromOrder(int productId)
+        {
+            _orderService.RemoveOrderItem(productId);
+        }
+
+        public decimal GetOrderTotal()
+        {
+            return _orderService.GetOrderTotal();
+        }
+
+        public List<(string ProductName, int Quantity, decimal Price)> GetOrderItems()
+        {
+            var orderItems = _orderService.GetCurrentOrder().OrderItems;
+
+            var result = orderItems.Select(oi => (
+                ProductName: oi.Product.Name,
+                Quantity: oi.Quantity,
+                Price: oi.Product.Price
+            )).ToList();
+
+            return result;
+        }
     }
 }
+

@@ -16,5 +16,21 @@ namespace OrderManagementApp.Controllers
         {
             _productService = productService;
         }
+
+        public bool AddProduct(string name, decimal price)
+        {
+            var product = new Product { Name = name, Price = price };
+            return _productService.AddProduct(product);
+        }
+
+        public void RemoveProduct(int productId)
+        {
+            _productService.RemoveProduct(productId);
+        }
+
+        public IEnumerable<Product> GetProducts()
+        {
+            return _productService.GetAllProducts();
+        }
     }
 }

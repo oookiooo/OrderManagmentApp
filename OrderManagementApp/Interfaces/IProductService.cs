@@ -9,6 +9,10 @@ namespace OrderManagementApp.Interfaces
 {
     public interface IProductService
     {
+        bool AddProduct(Product product);
+        void RemoveProduct(int productId);
+        Product GetProduct(int productId);
+        IEnumerable<Product> GetAllProducts();
     }
 
 }
